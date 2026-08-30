@@ -1,2 +1,11 @@
 1. Create git repo and clone it in local.
 2. Create mycode.py and add code to it. (it will save a csv file to a new "data" folder)
+3. Do a git add-commit-push before initializing dvc.
+pip install dvc
+4. Now we do "dvc init"(creates .dvcignore, .dvc)
+5. Now do 'mkdir s3' (creates a new s3 directory)- if using cloud then we will create aws s3 bucket
+6. Now we do 'dvc remote add -d myremote s3' - connect with our remote repo, if cloud we will enter the s3 bucket link in the place of 'myremote s3'.
+7. Next 'dvc add data/' - it means any changes to data in the folder 'data', dvc tracks it.
+7a. error faced- as the 'data' folder was being tracked by git- dvc gives command to stop the tracking-stopped- then dvc starts tracking.
+7b. So s3(created for dvc data tracking) starts tracking files in 'data' folder- in the process creates .ignore in s3 and .dvc that id which is used for tracking the changes.
+7c. data.dvc created in s3. If the name of the files folder is siva. Then siva.svc will be created in s3  instead of data.dvc
